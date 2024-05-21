@@ -1,0 +1,27 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">All Posts</h1>
+        <a href="/new" class="btn btn-primary mb-3">New Post</a>
+        <ul class="list-group">
+            <% posts.forEach(post => { %>
+                <li class="list-group-item">
+                    <a href="/post/<%= post.id %>"><%= post.title %></a>
+                    <form action="/delete/<%= post.id %>" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+                    </form>
+                    <a href="/edit/<%= post.id %>" class="btn btn-warning btn-sm float-right mr-2">Edit</a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
